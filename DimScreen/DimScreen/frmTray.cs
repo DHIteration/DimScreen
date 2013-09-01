@@ -9,6 +9,9 @@ namespace DimScreen
 {
     public partial class frmTray : Form
     {
+        // list of overlays currently displayed
+        private System.Collections.Generic.List<Form> overlays = new System.Collections.Generic.List<Form>();
+
         public frmTray()
         {
             InitializeComponent();
@@ -28,8 +31,8 @@ namespace DimScreen
                 //Clean up any used memeory.
                 GC.Collect();
 
-                Form fc = Application.OpenForms["frmMain"];
-                if (fc != null) fc.Dispose(); 
+                // remove all overlays
+                clearOverlays();
 
                 //Remove tray Icon
                 notifyIcon1.Dispose();
@@ -43,16 +46,28 @@ namespace DimScreen
 
         public void DimWindow(byte DimAmount)
         {
-            Form fc = Application.OpenForms["frmMain"];
-            if (fc != null) fc.Dispose();
+            // remove exiting overlays
+            clearOverlays();
 
+            // apply dimness onto all screens
+            foreach (var screen in Screen.AllScreens)
+            {
+                frmMain overlay = new frmMain();
+                overlay.Dimness = DimAmount;
+                overlay.Area = screen.WorkingArea;
+                overlay.Show();
 
-            frmMain Main = new frmMain();
-            Main.Dimness = DimAmount;
-            Main.Show();
+                overlays.Add(overlay);
+            }
         }
+        
+        private void clearOverlays()
+        {
+            foreach (var form in overlays)
+                form.Dispose();
 
-
+            overlays.Clear();
+        }
 
 
         private void frmTray_Load(object sender, EventArgs e)

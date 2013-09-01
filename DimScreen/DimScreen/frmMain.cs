@@ -11,6 +11,7 @@ namespace DimScreen
     {
 
         public byte Dimness;
+        public System.Drawing.Rectangle Area;
 
 #region Enum
         public enum GWL
@@ -62,9 +63,9 @@ namespace DimScreen
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
-            this.Size = new System.Drawing.Size(workingRectangle.Width, workingRectangle.Height);
-            this.Location = new System.Drawing.Point(0, 0);
+            // use working space rectangle info
+            this.Size = new System.Drawing.Size(Area.Width, Area.Height);
+            this.Location = new System.Drawing.Point(Area.X, Area.Y);
         }
 
 
