@@ -33,9 +33,20 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.menuNormal = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menu10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu30 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu40 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu50 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu60 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu70 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu80 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu90 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu100 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,55 +62,128 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripSeparator1,
-            this.toolStripMenuItem2});
+            this.menuExit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 54);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
+            this.menuNormal,
+            this.toolStripMenuItem3,
+            this.menu10,
+            this.menu20,
+            this.menu30,
+            this.menu40,
+            this.menu50,
+            this.menu60,
+            this.menu70,
+            this.menu80,
+            this.menu90,
+            this.menu100});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
             this.toolStripMenuItem1.Text = "Adjust Dimness";
             // 
-            // toolStripComboBox1
+            // menuNormal
             // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "Normal",
-            "10%",
-            "20%",
-            "30%",
-            "40%",
-            "50%",
-            "60%",
-            "70%",
-            "80%",
-            "90%",
-            "100%"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 21);
-            this.toolStripComboBox1.Text = "Normal";
-            this.toolStripComboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripComboBox1_KeyDown);
-            this.toolStripComboBox1.TextChanged += new System.EventHandler(this.toolStripComboBox1_TextChanged);
+            this.menuNormal.Name = "menuNormal";
+            this.menuNormal.Size = new System.Drawing.Size(152, 22);
+            this.menuNormal.Tag = "0";
+            this.menuNormal.Text = "Normal";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // menu10
+            // 
+            this.menu10.Name = "menu10";
+            this.menu10.Size = new System.Drawing.Size(152, 22);
+            this.menu10.Tag = "10";
+            this.menu10.Text = "10%";
+            // 
+            // menu20
+            // 
+            this.menu20.Name = "menu20";
+            this.menu20.Size = new System.Drawing.Size(152, 22);
+            this.menu20.Tag = "20";
+            this.menu20.Text = "20%";
+            // 
+            // menu30
+            // 
+            this.menu30.Name = "menu30";
+            this.menu30.Size = new System.Drawing.Size(152, 22);
+            this.menu30.Tag = "30";
+            this.menu30.Text = "30%";
+            // 
+            // menu40
+            // 
+            this.menu40.Name = "menu40";
+            this.menu40.Size = new System.Drawing.Size(152, 22);
+            this.menu40.Tag = "40";
+            this.menu40.Text = "40%";
+            // 
+            // menu50
+            // 
+            this.menu50.Name = "menu50";
+            this.menu50.Size = new System.Drawing.Size(152, 22);
+            this.menu50.Tag = "50";
+            this.menu50.Text = "50%";
+            // 
+            // menu60
+            // 
+            this.menu60.Name = "menu60";
+            this.menu60.Size = new System.Drawing.Size(152, 22);
+            this.menu60.Tag = "60";
+            this.menu60.Text = "60%";
+            // 
+            // menu70
+            // 
+            this.menu70.Name = "menu70";
+            this.menu70.Size = new System.Drawing.Size(152, 22);
+            this.menu70.Tag = "70";
+            this.menu70.Text = "70%";
+            // 
+            // menu80
+            // 
+            this.menu80.Name = "menu80";
+            this.menu80.Size = new System.Drawing.Size(152, 22);
+            this.menu80.Tag = "80";
+            this.menu80.Text = "80%";
+            // 
+            // menu90
+            // 
+            this.menu90.Name = "menu90";
+            this.menu90.Size = new System.Drawing.Size(152, 22);
+            this.menu90.Tag = "90";
+            this.menu90.Text = "90%";
+            // 
+            // menu100
+            // 
+            this.menu100.Name = "menu100";
+            this.menu100.Size = new System.Drawing.Size(152, 22);
+            this.menu100.Tag = "100";
+            this.menu100.Text = "100%";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
             // 
-            // toolStripMenuItem2
+            // menuExit
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem2.Text = "Exit";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(153, 22);
+            this.menuExit.Text = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
             // frmTray
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(104, 56);
+            this.ClientSize = new System.Drawing.Size(112, 56);
             this.ControlBox = false;
             this.Name = "frmTray";
             this.Opacity = 0D;
@@ -107,7 +191,6 @@
             this.ShowInTaskbar = false;
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTray_FormClosing);
             this.Load += new System.EventHandler(this.frmTray_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -120,7 +203,18 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem menuExit;
+        private System.Windows.Forms.ToolStripMenuItem menuNormal;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem menu10;
+        private System.Windows.Forms.ToolStripMenuItem menu20;
+        private System.Windows.Forms.ToolStripMenuItem menu30;
+        private System.Windows.Forms.ToolStripMenuItem menu40;
+        private System.Windows.Forms.ToolStripMenuItem menu50;
+        private System.Windows.Forms.ToolStripMenuItem menu60;
+        private System.Windows.Forms.ToolStripMenuItem menu70;
+        private System.Windows.Forms.ToolStripMenuItem menu80;
+        private System.Windows.Forms.ToolStripMenuItem menu90;
+        private System.Windows.Forms.ToolStripMenuItem menu100;
     }
 }

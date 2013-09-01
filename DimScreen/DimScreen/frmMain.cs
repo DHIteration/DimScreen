@@ -9,9 +9,25 @@ namespace DimScreen
 
     public partial class frmMain : Form
     {
+        Timer timerPhase = new Timer() { Interval = 25, Enabled = false };
+        public System.Drawing.Rectangle Area { get; set; }
 
-        public byte Dimness;
-        public System.Drawing.Rectangle Area;
+        private float targetValue;
+        private float currentValue;
+
+        public float Dimness
+        {
+            get
+            {
+                return targetValue;
+            }
+            set
+            {
+                targetValue = value;
+                timerPhase.Start();
+            }
+        }
+        
 
 #region Enum
         public enum GWL
@@ -50,14 +66,14 @@ namespace DimScreen
             int wl = GetWindowLong(this.Handle, GWL.ExStyle);
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
-            SetLayeredWindowAttributes(this.Handle, 0, Dimness, LWA.Alpha);
+            SetLayeredWindowAttributes(this.Handle, 0, 0, LWA.Alpha);
         }
 
 
         public frmMain()
         {
             InitializeComponent();
-
+            timerPhase.Tick += timerPhase_Tick;
         }        
 
 
@@ -68,7 +84,26 @@ namespace DimScreen
             this.Location = new System.Drawing.Point(Area.X, Area.Y);
         }
 
+        private void timerPhase_Tick(object sender, EventArgs e)
+        {
+            applyTransparency();
+        }
 
+        private void applyTransparency()
+        {
+            float calculatedValue = currentValue + Math.Sign(targetValue - currentValue) * 0.02f;
+
+            if (Math.Abs(targetValue - currentValue) < 0.02f * 2)
+            {
+                currentValue = targetValue;
+                timerPhase.Stop();
+            }
+
+            byte value = (byte)(calculatedValue * 255);
+            SetLayeredWindowAttributes(this.Handle, 0, value, LWA.Alpha);
+
+            currentValue = calculatedValue;
+        }
 
 
     }
