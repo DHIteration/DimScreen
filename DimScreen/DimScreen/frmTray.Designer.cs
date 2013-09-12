@@ -46,6 +46,7 @@
             this.menu90 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu100 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Screen Dim Settings";
+            this.notifyIcon1.Text = "DimScreen";
             this.notifyIcon1.Visible = true;
             // 
             // contextMenuStrip1
@@ -62,9 +63,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripSeparator1,
+            this.menuRestart,
             this.menuExit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 76);
             // 
             // toolStripMenuItem1
             // 
@@ -88,82 +90,82 @@
             // menuNormal
             // 
             this.menuNormal.Name = "menuNormal";
-            this.menuNormal.Size = new System.Drawing.Size(152, 22);
+            this.menuNormal.Size = new System.Drawing.Size(111, 22);
             this.menuNormal.Tag = "0";
             this.menuNormal.Text = "Normal";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(108, 6);
             // 
             // menu10
             // 
             this.menu10.Name = "menu10";
-            this.menu10.Size = new System.Drawing.Size(152, 22);
+            this.menu10.Size = new System.Drawing.Size(111, 22);
             this.menu10.Tag = "10";
             this.menu10.Text = "10%";
             // 
             // menu20
             // 
             this.menu20.Name = "menu20";
-            this.menu20.Size = new System.Drawing.Size(152, 22);
+            this.menu20.Size = new System.Drawing.Size(111, 22);
             this.menu20.Tag = "20";
             this.menu20.Text = "20%";
             // 
             // menu30
             // 
             this.menu30.Name = "menu30";
-            this.menu30.Size = new System.Drawing.Size(152, 22);
+            this.menu30.Size = new System.Drawing.Size(111, 22);
             this.menu30.Tag = "30";
             this.menu30.Text = "30%";
             // 
             // menu40
             // 
             this.menu40.Name = "menu40";
-            this.menu40.Size = new System.Drawing.Size(152, 22);
+            this.menu40.Size = new System.Drawing.Size(111, 22);
             this.menu40.Tag = "40";
             this.menu40.Text = "40%";
             // 
             // menu50
             // 
             this.menu50.Name = "menu50";
-            this.menu50.Size = new System.Drawing.Size(152, 22);
+            this.menu50.Size = new System.Drawing.Size(111, 22);
             this.menu50.Tag = "50";
             this.menu50.Text = "50%";
             // 
             // menu60
             // 
             this.menu60.Name = "menu60";
-            this.menu60.Size = new System.Drawing.Size(152, 22);
+            this.menu60.Size = new System.Drawing.Size(111, 22);
             this.menu60.Tag = "60";
             this.menu60.Text = "60%";
             // 
             // menu70
             // 
             this.menu70.Name = "menu70";
-            this.menu70.Size = new System.Drawing.Size(152, 22);
+            this.menu70.Size = new System.Drawing.Size(111, 22);
             this.menu70.Tag = "70";
             this.menu70.Text = "70%";
             // 
             // menu80
             // 
             this.menu80.Name = "menu80";
-            this.menu80.Size = new System.Drawing.Size(152, 22);
+            this.menu80.Size = new System.Drawing.Size(111, 22);
             this.menu80.Tag = "80";
             this.menu80.Text = "80%";
             // 
             // menu90
             // 
             this.menu90.Name = "menu90";
-            this.menu90.Size = new System.Drawing.Size(152, 22);
+            this.menu90.Size = new System.Drawing.Size(111, 22);
             this.menu90.Tag = "90";
             this.menu90.Text = "90%";
             // 
             // menu100
             // 
             this.menu100.Name = "menu100";
-            this.menu100.Size = new System.Drawing.Size(152, 22);
+            this.menu100.Size = new System.Drawing.Size(111, 22);
             this.menu100.Tag = "100";
             this.menu100.Text = "100%";
             // 
@@ -171,6 +173,13 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
+            // 
+            // menuRestart
+            // 
+            this.menuRestart.Name = "menuRestart";
+            this.menuRestart.Size = new System.Drawing.Size(153, 22);
+            this.menuRestart.Text = "Restart";
+            this.menuRestart.Click += new System.EventHandler(this.menuRestart_Click);
             // 
             // menuExit
             // 
@@ -216,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu80;
         private System.Windows.Forms.ToolStripMenuItem menu90;
         private System.Windows.Forms.ToolStripMenuItem menu100;
+        private System.Windows.Forms.ToolStripMenuItem menuRestart;
     }
 }

@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 
-
-
-
-
 namespace DimScreen
 {
     public partial class frmTray : Form
     {
         // list of overlays currently displayed
-        private System.Collections.Generic.List<Form> overlays = new System.Collections.Generic.List<Form>();
+        private System.Collections.Generic.List<frmMain> overlays = new System.Collections.Generic.List<frmMain>();
 
         public frmTray()
         {
@@ -18,11 +14,12 @@ namespace DimScreen
 
         }
 
-        public void DimWindow(byte value)
+        private void configureOverlays(float initialValue)
         {
             // remove exiting overlays
             clearOverlays();
 
+            // add screens if they don't already exist
             if (overlays.Count != Screen.AllScreens.Length)
             {
                 // apply dimness onto all screens
@@ -33,12 +30,13 @@ namespace DimScreen
                     overlay.Area = screen.WorkingArea;
                     overlay.Show();
 
+                    // add to list of overlays
                     overlays.Add(overlay);
                 }
             }
 
             foreach (frmMain form in overlays)
-                form.Dimness = value;
+                form.Dimness = initialValue;
         }
 
         private void clearOverlays()
@@ -64,7 +62,32 @@ namespace DimScreen
             menu90.Click += numericMenus_Click;
             menu100.Click += numericMenus_Click;
 
-            DimWindow(0);
+            // get command line values
+            var arg = "";
+            var args = Environment.GetCommandLineArgs();
+            if (args.Length > 1) arg = args[1];
+
+            //TEST: force command line arg to test
+            //arg = "50";
+
+            if (arg != "")
+            {
+                try
+                {
+                    var val = float.Parse(arg) / 100;
+                    if (val > 100 || val < 0) throw new Exception("Out of range");
+                    configureOverlays(val);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.");
+                    configureOverlays(0);
+                }
+            }
+            else
+            {
+                configureOverlays(0);
+            }
         }
 
 
@@ -96,6 +119,13 @@ namespace DimScreen
 
             foreach (frmMain form in overlays)
                 form.Dimness = value / 100;
+        }
+
+        private void menuRestart_Click(object sender, EventArgs e)
+        {
+            var exePath = Application.ExecutablePath;
+            System.Diagnostics.Process.Start(exePath, (overlays[0].Dimness * 100).ToString());
+            Application.Exit();
         }
     }
 }

@@ -63,10 +63,6 @@ namespace DimScreen
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
-            wl = wl | 0x80000 | 0x20;
-            SetWindowLong(this.Handle, GWL.ExStyle, wl);
-            SetLayeredWindowAttributes(this.Handle, 0, 0, LWA.Alpha);
         }
 
 
@@ -82,6 +78,8 @@ namespace DimScreen
             // use working space rectangle info
             this.Size = new System.Drawing.Size(Area.Width, Area.Height);
             this.Location = new System.Drawing.Point(Area.X, Area.Y);
+
+            applyTransparency();
         }
 
         private void timerPhase_Tick(object sender, EventArgs e)
@@ -99,8 +97,12 @@ namespace DimScreen
                 timerPhase.Stop();
             }
 
+            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
+            wl = wl | 0x80000 | 0x20;
+            SetWindowLong(this.Handle, GWL.ExStyle, wl);
+            
             byte value = (byte)(calculatedValue * 255);
-            SetLayeredWindowAttributes(this.Handle, 0, value, LWA.Alpha);
+            SetLayeredWindowAttributes(this.Handle, 0x128, value, LWA.Alpha);
 
             currentValue = calculatedValue;
         }
