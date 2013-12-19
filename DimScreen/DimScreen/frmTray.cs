@@ -127,5 +127,10 @@ namespace DimScreen
             System.Diagnostics.Process.Start(exePath, (overlays[0].Dimness * 100).ToString());
             Application.Exit();
         }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+             contextMenuStrip1.Show();
+        }
     }
 }
