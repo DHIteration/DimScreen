@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace DimScreen
 {
     public partial class frmTray : Form
     {
 
-        byte DimPercent = 0;
+
+        //Used to setup our registry access.
+        RegistryKey regkey = null;
+        public static RegistryKey regkey_ = null;
+
+        float DimPercent = 0;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
 
         enum KeyModifier
         {
@@ -29,6 +36,25 @@ namespace DimScreen
         public frmTray()
         {
             InitializeComponent();
+
+
+            //Connect to registry.
+            regkey = Registry.CurrentUser.OpenSubKey("Software\\DimScreen", true);
+            regkey_ = regkey;
+
+            //If connection was Bad or First Run.
+            if (regkey == null)
+            {
+                //Create or Regitry values.
+                Registry.CurrentUser.CreateSubKey("Software\\DimScreen");
+                regkey = Registry.CurrentUser.OpenSubKey("Software\\DimScreen", true);
+                regkey_ = regkey;
+
+                //Save our data.
+                regkey.SetValue("DimAmount", 0);
+            }
+
+
 
 
             //Hotkey Registration.
@@ -56,6 +82,7 @@ namespace DimScreen
                 {
                     if (DimPercent == 100) return;
                     DimPercent += 10;
+                    regkey.SetValue("DimAmount", DimPercent);
                 }
 
                 //Decrease Percent of Dimming.
@@ -63,6 +90,8 @@ namespace DimScreen
                 {
                     if (DimPercent == 0) return;
                     DimPercent -= 10;
+                    regkey.SetValue("DimAmount", DimPercent);
+
                 }
 
                 
@@ -148,28 +177,45 @@ namespace DimScreen
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.");
+                    MessageBox.Show(this,"Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     configureOverlays(0);
                 }
             }
             else
             {
-                configureOverlays(0);
+                try
+                {
+                    object regObject = regkey.GetValue("DimAmount", 0);
+                    float savedValue = (float.Parse(regObject.ToString()) / 100);
+                    if (savedValue > 100 || savedValue < 0) throw new Exception("Out of range");
+                    configureOverlays(savedValue);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    configureOverlays(0);
+                }
             }
         }
+
+
+
+
+
+
+
+
+
 
 
         private void menuExit_Click(object sender, EventArgs e)
         {
             //Display a Message box asking if the user wishes to exit.
-            DialogResult reply = MessageBox.Show("Are you sure you want to exit?", "Close?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult reply = MessageBox.Show(this, "Are you sure you want to exit?", "Close?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             //If users answer was yes.
             if (reply == DialogResult.Yes)
             {
-                //Clean up any used memeory.
-                GC.Collect();
-
                 // remove all overlays
                 clearOverlays();
 
@@ -178,7 +224,10 @@ namespace DimScreen
 
                 //Remove Hotkey Hooks
                 UnregisterHotKey(this.Handle, 0);
-                UnregisterHotKey(this.Handle, 1); 
+                UnregisterHotKey(this.Handle, 1);
+
+                //Clean up any used memeory.
+                GC.Collect();
 
                 //Close the Application.
                 this.Dispose();
@@ -190,7 +239,8 @@ namespace DimScreen
             var value = float.Parse((((ToolStripMenuItem)sender).Tag.ToString()));
              
             //Saving Percentage of dim value for use with hotkeys.
-            DimPercent = (byte)value;
+            DimPercent = value;
+            regkey.SetValue("DimAmount", DimPercent);
 
             foreach (frmMain form in overlays)
                 form.Dimness = value / 100;

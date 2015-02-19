@@ -9,6 +9,6 @@ Allows you to dim your desktop if its a bit to bright.
 - Multiple monitors
 - Command line support
 - Smooth transitions!
-- Screen dimming controled by hotkeys.
+- Screen dimming via hotkeys, Ctrl + NumSubtract / NumAdd
+- Dimness saved to registry
 
-[![Build Status](https://travis-ci.org/jaywick/DimScreen.svg?branch=master)](https://travis-ci.org/jaywick/DimScreen)

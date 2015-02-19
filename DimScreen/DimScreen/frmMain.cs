@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 
 
+
 namespace DimScreen
 {
 
@@ -82,11 +83,11 @@ namespace DimScreen
         private void applyTransparency()
         {
             float calculatedValue = currentValue + Math.Sign(targetValue - currentValue) * 0.02f;
-
             if (Math.Abs(targetValue - currentValue) < 0.02f * 2)
             {
                 currentValue = targetValue;
                 timerPhase.Stop();
+                Console.WriteLine(Dimness * 100);
             }
 
             int wl = GetWindowLong(this.Handle, GWL.ExStyle);
