@@ -52,8 +52,33 @@ namespace DimScreen
 
                 //Save our data.
                 regkey.SetValue("DimAmount", 0);
-            }
 
+                // Check the first item in the list
+                var firstItem = (ToolStripMenuItem)contextMenuStrip1.Items[0];
+                firstItem.Checked = true;
+            }
+            else
+            {
+                //Check item with value in use
+                foreach (var i in contextMenuStrip1.Items)
+                {
+                    //Skip if Separator is found instead of Item
+                    if (i.GetType().Equals(typeof(ToolStripSeparator)))
+                    {
+                        continue;
+                    }
+
+                    //Cast as Item and check appropriately
+                    ToolStripMenuItem item = (ToolStripMenuItem)i;
+                    int itemValue = int.Parse((string)item.Tag);
+                    int regValue = int.Parse((string)regkey_.GetValue("DimAmount"));
+                    if (itemValue == regValue)
+                    {
+                        item.Checked = true;
+                        break;
+                    }
+                }
+            }
 
 
 
@@ -94,7 +119,7 @@ namespace DimScreen
 
                 }
 
-                
+
                 //Choose the Menu Item based on new percent and click.
                 foreach (ToolStripMenuItem item in this.contextMenuStrip1.Items)
                 {
@@ -177,7 +202,7 @@ namespace DimScreen
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this,"Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Expecting number from 0 to 100 to represent percentage of dimming. 0 means no change, 100 being totally dark.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     configureOverlays(0);
                 }
             }
@@ -236,8 +261,29 @@ namespace DimScreen
 
         private void numericMenus_Click(object sender, EventArgs e)
         {
-            var value = float.Parse((((ToolStripMenuItem)sender).Tag.ToString()));
-             
+            //Get clicked item as Item
+            ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
+
+            //Check new item and uncheck old items
+            foreach (var i in contextMenuStrip1.Items)
+            {
+                //Skip if Separator is found instead of Item
+                if (i.GetType().Equals(typeof(ToolStripSeparator)))
+                {
+                    continue;
+                }
+
+                //Cast as Item and check appropriately
+                ToolStripMenuItem item = (ToolStripMenuItem)i;
+                if (item == menuItem)
+                    item.Checked = true;
+                else
+                    item.Checked = false;
+            }
+
+            //Get value of selected item
+            var value = float.Parse((menuItem.Tag.ToString()));
+
             //Saving Percentage of dim value for use with hotkeys.
             DimPercent = value;
             regkey.SetValue("DimAmount", DimPercent);
@@ -256,7 +302,7 @@ namespace DimScreen
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-             contextMenuStrip1.Show();
+            contextMenuStrip1.Show();
         }
 
 
