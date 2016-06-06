@@ -1,0 +1,11 @@
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.exe
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.pdb
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmMain.resources
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmTray.resources
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.Properties.Resources.resources
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.csproj.GenerateResource.Cache
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.exe
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.pdb
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.csprojResolveAssemblyReference.cache
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.exe.config
+C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmOSD.resources
