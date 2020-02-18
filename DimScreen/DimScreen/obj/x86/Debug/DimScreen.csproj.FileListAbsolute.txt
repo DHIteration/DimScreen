@@ -9,3 +9,14 @@ C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimSc
 C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.csprojResolveAssemblyReference.cache
 C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.exe.config
 C:\Users\Gentry\Desktop\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmOSD.resources
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.exe.config
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.exe
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.pdb
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.exe
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\bin\Debug\DimScreen.pdb
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.csprojResolveAssemblyReference.cache
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmOSD.resources
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmMain.resources
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.frmTray.resources
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.Properties.Resources.resources
+C:\Users\Killdnaction\Desktop\Roberts Stuff\C# Projects\DimScreen-master\DimScreen\DimScreen\obj\x86\Debug\DimScreen.csproj.GenerateResource.Cache
