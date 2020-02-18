@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading.Tasks;
+using System.Threading;
 
 
 
@@ -11,7 +12,10 @@ namespace DimScreen
 
     public partial class frmMain : Form
     {
-        Timer timerPhase = new Timer() { Interval = 25, Enabled = false };
+
+        //Had to refrence it like this cause of a threading conflict.
+        System.Windows.Forms.Timer timerPhase = new System.Windows.Forms.Timer() { Interval = 25, Enabled = false };
+
         frmOSD overlay = new frmOSD();
 
 
@@ -75,6 +79,24 @@ namespace DimScreen
         {
             InitializeComponent();
             timerPhase.Tick += timerPhase_Tick;
+
+
+            //Keep frmMain OnTop.
+            new Thread(() =>
+            {
+                try
+                {
+                    while (true)
+                    {
+                        this.TopMost = true;
+                        this.WindowState = FormWindowState.Maximized;
+                        this.FormBorderStyle = FormBorderStyle.None;
+                        Thread.Sleep(1);
+                    }
+                }
+                catch (Exception ex) { }
+            }).Start();
+
         }        
 
         private void timerPhase_Tick(object sender, EventArgs e)
@@ -118,9 +140,11 @@ namespace DimScreen
         {
             
             await Task.Delay(2000);
-            //Fade Label out here???
+            //Fade form out here???
+
 
             overlay.Hide();
+            overlay.Opacity = 100;
 
         }
 
@@ -157,7 +181,7 @@ namespace DimScreen
         private void frmMain_Load(object sender, EventArgs e)
         {
             // use working space rectangle info
-            this.Size = new System.Drawing.Size(Area.Width, Area.Height);
+            this.Size = new System.Drawing.Size(Size.Width, Size.Height);
             this.Location = new System.Drawing.Point(Area.X, Area.Y);
 
             applyTransparency();

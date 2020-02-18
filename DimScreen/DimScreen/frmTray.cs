@@ -294,6 +294,8 @@ namespace DimScreen
 
         private void menuRestart_Click(object sender, EventArgs e)
         {
+            //Add check for Enviorment Runtime to prevent accidental usage.
+
             var exePath = Application.ExecutablePath;
             System.Diagnostics.Process.Start(exePath, (overlays[0].Dimness * 100).ToString());
             GC.Collect();
